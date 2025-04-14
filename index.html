@@ -2,95 +2,96 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Компаньон для Gaslands</title>
+  <title>Gaslands Cyberpunk Companion</title>
+  <!-- Подключим Google-шрифт для футуристического вида (например, Share Tech Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Верхняя "статичная" панель в стиле, похожем на твой скриншот -->
+  <header class="cyber-top-bar">
+    <div class="cyber-title">RIPPERDOC SURGICAL SOFTWARE V2</div>
+    <div class="cyber-subtitle">
+      <span>STORE ACCESS</span>
+      <span>FLATR 713 SHOP</span>
+    </div>
+  </header>
+
   <!-- Экран 1: Мои команды -->
-  <div id="screen1" class="screen active">
-    <header class="top-bar">
-      <h1>Мои команды</h1>
-      <button class="top-bar-btn" id="btnNewTeamTop">Новая команда</button>
-    </header>
-    <main class="main-content">
+  <div id="screen1" class="screen active cyber-frame">
+    <h2 class="screen-heading">Мои команды</h2>
+    <button class="cyber-btn" id="btnNewTeamTop">Новая команда</button>
+    <div class="content-block">
       <p class="no-teams-text">Команды отсутствуют.</p>
-      <button class="link-button" id="btnNewTeamCenter">Новая команда</button>
-    </main>
-    <nav class="bottom-nav">
-      <button class="nav-btn" id="navTeams">Мои команды</button>
-      <button class="nav-btn" id="navTools">Инструменты</button>
-      <button class="nav-btn" id="navMore">Еще</button>
-    </nav>
+      <button class="cyber-btn" id="btnNewTeamCenter">Новая команда</button>
+    </div>
+    <div class="footer-line">
+      <span>INTERFACE LOADED</span> 
+      <span>BUILD 0.6.1+N84L / 2715</span>
+    </div>
   </div>
   
   <!-- Экран 2: Создать команду -->
-  <div id="screen2" class="screen">
-    <header class="top-bar">
-      <button class="top-bar-btn" id="btnCancel">Отмена</button>
-      <h1>Создать команду</h1>
-      <button class="top-bar-btn" id="btnSave">Сохранить</button>
-    </header>
-    <main class="main-content">
-      <div class="form-group">
-        <label for="teamName">Название команды</label>
-        <input type="text" id="teamName" placeholder="Введите название">
-      </div>
-      <div class="form-group">
-        <label>Спонсор</label>
-        <button id="btnSelectSponsor">Выбрать спонсора</button>
-        <p id="selectedSponsor" class="selected-info">Не выбран</p>
-      </div>
-      <div class="form-group">
-        <label for="teamCost">Стоимость команды</label>
-        <input type="number" id="teamCost" value="0" readonly>
-      </div>
-      <button id="btnAddVehicle">Добавить машину</button>
-    </main>
-    <nav class="bottom-nav">
-      <button class="nav-btn" id="navTeams2">Мои команды</button>
-      <button class="nav-btn" id="navTools2">Инструменты</button>
-      <button class="nav-btn" id="navMore2">Еще</button>
-    </nav>
+  <div id="screen2" class="screen cyber-frame">
+    <h2 class="screen-heading">Создать команду</h2>
+    <button class="cyber-btn small" id="btnCancel">Отмена</button>
+    <button class="cyber-btn small" id="btnSave">Сохранить</button>
+
+    <div class="content-block">
+      <label for="teamName">Название команды:</label>
+      <input type="text" id="teamName" class="cyber-input" placeholder="Введите название">
+
+      <label>Спонсор:</label>
+      <button class="cyber-btn small" id="btnSelectSponsor">Выбрать спонсора</button>
+      <p id="selectedSponsor" class="selected-info">Не выбран</p>
+
+      <label for="teamCost">Стоимость команды:</label>
+      <input type="number" id="teamCost" class="cyber-input" value="0" readonly>
+
+      <button class="cyber-btn" id="btnAddVehicle">Добавить машину</button>
+    </div>
+    
+    <div class="footer-line">
+      <span>PRODUCED BY ARAS NETWORK v10.B</span>
+    </div>
   </div>
   
   <!-- Экран 3: Выбор спонсора (динамический список) -->
-  <div id="screenSponsors" class="screen">
-    <header class="top-bar">
-      <button class="top-bar-btn" id="btnSponsorBack">Назад</button>
-      <h1>Спонсоры</h1>
-    </header>
-    <main class="main-content">
-      <!-- Контейнер, куда динамически загрузится список из sponsors.json -->
+  <div id="screenSponsors" class="screen cyber-frame">
+    <h2 class="screen-heading">Спонсоры</h2>
+    <button class="cyber-btn small" id="btnSponsorBack">Назад</button>
+
+    <div class="content-block">
+      <!-- Сюда подгрузим список спонсоров из sponsors.json -->
       <ul id="sponsorList" class="sponsor-list"></ul>
-    </main>
+    </div>
+    <div class="footer-line">
+      <span>CHOOSE WISELY</span>
+    </div>
   </div>
-  
+
   <!-- Экран 4: Инструменты -->
-  <div id="screenTools" class="screen">
-    <header class="top-bar">
-      <h1>Инструменты</h1>
-    </header>
-    <main class="main-content">
-      <h3>Полезное</h3>
+  <div id="screenTools" class="screen cyber-frame">
+    <h2 class="screen-heading">Инструменты</h2>
+    <div class="content-block">
       <ul class="simple-list">
         <li>Кубик для броска</li>
         <li>D6 справочник</li>
         <li>Errata и FAQ</li>
       </ul>
-    </main>
-    <nav class="bottom-nav">
-      <button class="nav-btn" id="navTeams3">Мои команды</button>
-      <button class="nav-btn active" id="navTools3">Инструменты</button>
-      <button class="nav-btn" id="navMore3">Еще</button>
-    </nav>
+    </div>
+    <div class="footer-line">
+      <span>TOOLS INTERFACE</span>
+    </div>
   </div>
   
   <!-- Экран 5: Еще -->
-  <div id="screenMore" class="screen">
-    <header class="top-bar">
-      <h1>Еще</h1>
-    </header>
-    <main class="main-content">
+  <div id="screenMore" class="screen cyber-frame">
+    <h2 class="screen-heading">Еще</h2>
+    <div class="content-block">
       <ul class="simple-list">
         <li>Версия приложения: <span class="list-value">2.2</span></li>
         <li>Номер сборки: <span class="list-value">20240620</span></li>
@@ -98,14 +99,19 @@
         <li>Благодарности</li>
         <li>Политика конфиденциальности</li>
       </ul>
-    </main>
-    <nav class="bottom-nav">
-      <button class="nav-btn" id="navTeams4">Мои команды</button>
-      <button class="nav-btn" id="navTools4">Инструменты</button>
-      <button class="nav-btn active" id="navMore4">Еще</button>
-    </nav>
+    </div>
+    <div class="footer-line">
+      <span>MORE INTERFACE</span>
+    </div>
   </div>
-  
+
+  <!-- "Нижняя" панель навигации, если нужно (можно стилизовать иначе) -->
+  <nav class="cyber-bottom-nav">
+    <button class="cyber-btn nav" id="navTeams">Команды</button>
+    <button class="cyber-btn nav" id="navTools">Инструменты</button>
+    <button class="cyber-btn nav" id="navMore">Еще</button>
+  </nav>
+
   <script src="script.js"></script>
 </body>
 </html>

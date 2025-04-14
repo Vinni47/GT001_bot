@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Функция переключения экранов
   function showScreen(screenElement) {
     const screens = document.querySelectorAll(".screen");
-    screens.forEach(screen => screen.classList.remove("active"));
+    screens.forEach(s => s.classList.remove("active"));
     screenElement.classList.add("active");
   }
 
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const screenTools = document.getElementById("screenTools");
   const screenMore = document.getElementById("screenMore");
 
-  // Элементы для переходов между экранами
+  // Элементы для перехода
   const btnNewTeamTop = document.getElementById("btnNewTeamTop");
   const btnNewTeamCenter = document.getElementById("btnNewTeamCenter");
   const btnCancel = document.getElementById("btnCancel");
@@ -21,67 +21,56 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnSelectSponsor = document.getElementById("btnSelectSponsor");
   const btnSponsorBack = document.getElementById("btnSponsorBack");
 
-  // Нижняя навигация (на экранах 1 и 2)
-  const navTeams  = document.getElementById("navTeams");
-  const navTools  = document.getElementById("navTools");
-  const navMore   = document.getElementById("navMore");
-  const navTeams2 = document.getElementById("navTeams2");
-  const navTools2 = document.getElementById("navTools2");
-  const navMore2  = document.getElementById("navMore2");
-  const navTeams3 = document.getElementById("navTeams3");
-  const navTools3 = document.getElementById("navTools3");
-  const navMore3  = document.getElementById("navMore3");
-  const navTeams4 = document.getElementById("navTeams4");
-  const navTools4 = document.getElementById("navTools4");
-  const navMore4  = document.getElementById("navMore4");
+  // Навигационные кнопки (внизу)
+  const navTeams = document.getElementById("navTeams");
+  const navTools = document.getElementById("navTools");
+  const navMore  = document.getElementById("navMore");
 
-  // Элемент для отображения выбранного спонсора
-  const selectedSponsorDisplay = document.getElementById("selectedSponsor");
+  // Возможно, у тебя несколько похожих кнопок на других экранах — добавь при необходимости.
+  
+  // Показать "Мои команды" (экран1)
+  if (btnNewTeamTop) {
+    btnNewTeamTop.addEventListener("click", () => showScreen(screen2));
+  }
+  if (btnNewTeamCenter) {
+    btnNewTeamCenter.addEventListener("click", () => showScreen(screen2));
+  }
 
-  // Переключение экранов "Новая команда"
-  if (btnNewTeamTop) btnNewTeamTop.addEventListener("click", () => showScreen(screen2));
-  if (btnNewTeamCenter) btnNewTeamCenter.addEventListener("click", () => showScreen(screen2));
-  if (btnCancel) btnCancel.addEventListener("click", () => showScreen(screen1));
-  if (btnSave) btnSave.addEventListener("click", () => {
-    // Здесь можно добавить логику сохранения команды
-    showScreen(screen1);
-  });
+  // Отмена / Сохранить → назад на экран1
+  if (btnCancel) {
+    btnCancel.addEventListener("click", () => showScreen(screen1));
+  }
+  if (btnSave) {
+    btnSave.addEventListener("click", () => {
+      // Здесь логика сохранения...
+      showScreen(screen1);
+    });
+  }
 
-  // Нижняя навигация
+  // Навигация снизу
   if (navTeams) navTeams.addEventListener("click", () => showScreen(screen1));
-  if (navTeams2) navTeams2.addEventListener("click", () => showScreen(screen1));
-  if (navTeams3) navTeams3.addEventListener("click", () => showScreen(screen1));
-  if (navTeams4) navTeams4.addEventListener("click", () => showScreen(screen1));
-
   if (navTools) navTools.addEventListener("click", () => showScreen(screenTools));
-  if (navTools2) navTools2.addEventListener("click", () => showScreen(screenTools));
-  if (navTools3) navTools3.addEventListener("click", () => showScreen(screenTools));
-  if (navTools4) navTools4.addEventListener("click", () => showScreen(screenTools));
+  if (navMore)  navMore.addEventListener("click", () => showScreen(screenMore));
 
-  if (navMore) navMore.addEventListener("click", () => showScreen(screenMore));
-  if (navMore2) navMore2.addEventListener("click", () => showScreen(screenMore));
-  if (navMore3) navMore3.addEventListener("click", () => showScreen(screenMore));
-  if (navMore4) navMore4.addEventListener("click", () => showScreen(screenMore));
-
-  // Переход на экран выбора спонсора
+  // Кнопка "Выбрать спонсора"
   if (btnSelectSponsor) {
     btnSelectSponsor.addEventListener("click", () => {
       showScreen(screenSponsors);
     });
   }
 
-  // Назад с экрана спонсоров в "Создать команду"
+  // Назад со спонсоров
   if (btnSponsorBack) {
     btnSponsorBack.addEventListener("click", () => {
       showScreen(screen2);
     });
   }
 
-  // Загрузка данных о спонсорах из файла sponsors.json
+  // Загрузка данных о спонсорах из sponsors.json (пример)
   fetch("sponsors.json")
     .then(response => {
       if (!response.ok) {
-        throw new Error("Не удалось загрузить sponsors.json: " + response.statusText);
+        throw new Error("Ошибка при загрузке sponsors.json: " + response.statusText);
       }
       return response.json();
     })
@@ -90,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
       let sponsorHTML = "";
 
       sponsorsData.forEach(sponsor => {
-        // Формируем список перков для каждого спонсора
         let perksHTML = "";
         if (sponsor.perks && Array.isArray(sponsor.perks)) {
           perksHTML = sponsor.perks.map(perk => {
@@ -117,23 +105,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
       sponsorListEl.innerHTML = sponsorHTML;
 
-      // Обработка клика по элементу спонсора
-      const sponsorItems = document.querySelectorAll(".sponsor-item");
+      // При клике на конкретного спонсора
+      const sponsorItems = sponsorListEl.querySelectorAll(".sponsor-item");
       sponsorItems.forEach(item => {
         item.addEventListener("click", () => {
           const sponsorSlug = item.getAttribute("data-sponsor");
           const selectedSponsor = sponsorsData.find(s => s.slug === sponsorSlug);
           if (selectedSponsor) {
-            selectedSponsorDisplay.textContent = selectedSponsor.name;
+            document.getElementById("selectedSponsor").textContent = selectedSponsor.name;
           }
-          // Возвращаемся на экран "Создать команду"
           showScreen(screen2);
         });
       });
     })
     .catch(error => {
-      console.error("Ошибка загрузки спонсоров:", error);
+      console.error("Ошибка загрузки:", error);
       const sponsorListEl = document.getElementById("sponsorList");
-      sponsorListEl.innerHTML = "<li>Ошибка загрузки данных о спонсорах.</li>";
+      sponsorListEl.innerHTML = "<li>Ошибка загрузки спонсоров.</li>";
     });
 });

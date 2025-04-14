@@ -1,105 +1,143 @@
-/* Общие стили */
+/* Подключили Google Font: Share Tech Mono (см. index.html) */
+/* Общий стиль */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  padding: 0;
+  background-color: #000; /* чёрный фон */
+  color: #00ff99; /* неоново-зелёный / бирюзовый */
+  font-family: 'Share Tech Mono', monospace;
 }
 
-/* Стили для экранов */
+/* Скрываем все "экраны", кроме активного */
 .screen {
   display: none;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   box-sizing: border-box;
+  padding: 20px;
 }
 
 .screen.active {
   display: block;
 }
 
-/* Верхняя панель */
-.top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #f8f8f8;
+/* Общая рамка экрана */
+.cyber-frame {
+  border: 1px solid #00ff99;
+  margin: 10px;
+  position: relative;
+}
+
+/* Верхняя панель, как на скриншоте */
+.cyber-top-bar {
+  border-bottom: 1px solid #00ff99;
   padding: 10px;
-  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  background: #000;
 }
 
-.top-bar h1 {
-  margin: 0;
+.cyber-title {
   font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
 }
 
-.top-bar-btn {
-  background: none;
-  border: none;
-  color: #007bff;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-/* Основное содержимое */
-.main-content {
-  padding: 20px;
-  margin-bottom: 60px; /* Отступ для нижней навигации */
-}
-
-/* Формы */
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-group label {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 5px;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 8px;
+.cyber-subtitle {
+  display: flex;
+  justify-content: space-between;
   font-size: 14px;
-  box-sizing: border-box;
+}
+
+/* Нижняя панель, если используем навигацию */
+.cyber-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #000;
+  border-top: 1px solid #00ff99;
+  display: flex;
+  justify-content: space-around;
+  padding: 5px 0;
+}
+
+/* Заголовки экранов */
+.screen-heading {
+  font-size: 20px;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
 }
 
 /* Кнопки */
-button {
-  padding: 10px 15px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-/* Информация о выбранном спонсоре */
-.selected-info {
-  margin-top: 5px;
-}
-
-/* Нижняя навигация */
-.bottom-nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 60px;
-  border-top: 1px solid #ccc;
-  background: #f8f8f8;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-
-.nav-btn {
-  background: none;
-  border: none;
+.cyber-btn {
+  border: 1px solid #00ff99;
+  background: transparent;
+  color: #00ff99;
+  font-family: inherit;
   font-size: 14px;
   cursor: pointer;
-  color: #333;
+  padding: 6px 10px;
+  margin: 5px 0;
+  transition: background 0.2s, color 0.2s;
 }
 
-.nav-btn.active {
-  color: #007bff;
-  font-weight: bold;
+.cyber-btn:hover {
+  background: #00ff99;
+  color: #000;
+}
+
+.cyber-btn.small {
+  font-size: 12px;
+  padding: 4px 8px;
+}
+
+.cyber-btn.nav {
+  flex: 1;
+  margin: 0 5px;
+}
+
+/* Поля ввода */
+.cyber-input {
+  width: 100%;
+  background: #000;
+  border: 1px solid #00ff99;
+  color: #00ff99;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 6px;
+  margin-bottom: 10px;
+}
+
+.cyber-input:focus {
+  outline: none;
+  box-shadow: 0 0 5px #00ff99;
+}
+
+/* Контентный блок */
+.content-block {
+  margin-top: 10px;
+}
+
+/* Подписи и прочее */
+.no-teams-text {
+  margin: 15px 0;
+  font-size: 16px;
+}
+
+.selected-info {
+  margin: 5px 0 15px 0;
+  font-style: italic;
+}
+
+/* Футер (нижняя информационная строка внутри экрана) */
+.footer-line {
+  border-top: 1px solid #00ff99;
+  padding-top: 5px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
 }
 
 /* Список спонсоров */
@@ -109,41 +147,19 @@ button {
   margin: 0;
 }
 
-.sponsor-item {
-  border: 1px solid #ccc;
-  border-radius: 6px;
+.sponsor-list .sponsor-item {
+  border: 1px solid #00ff99;
   padding: 10px;
   margin-bottom: 10px;
-  background-color: #f9f9f9;
   cursor: pointer;
 }
 
-.sponsor-item h3 {
-  margin: 0 0 5px;
-  font-size: 18px;
+.sponsor-list .sponsor-item:hover {
+  background: #00ff99;
+  color: #000;
 }
 
-.perk-frame {
-  border: 1px solid #007bff;
-  padding: 8px;
-  border-radius: 4px;
-  background-color: #eaf2ff;
-  margin-top: 5px;
-}
-
-.perk-frame .perk-title {
-  font-weight: bold;
-  margin: 0 0 5px;
-}
-
-.perk-list {
-  list-style: disc inside;
-  margin: 0;
-  padding: 0;
-  font-size: 14px;
-}
-
-/* Простые списки для экранов "Инструменты" и "Еще" */
+/* Простые списки (Tools, More) */
 .simple-list {
   list-style: none;
   padding: 0;
@@ -151,12 +167,37 @@ button {
 }
 
 .simple-list li {
-  padding: 12px;
-  border-bottom: 1px solid #ccc;
-  font-size: 16px;
+  border-bottom: 1px solid #00ff99;
+  padding: 8px 0;
 }
 
-.list-value {
-  color: #666;
+/* Перк-фреймы (если используете perk-frame) */
+.perk-frame {
+  border: 1px solid #00ff99;
+  padding: 8px;
+  margin-top: 8px;
+}
+.perk-title {
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+.perk-list {
+  list-style: disc inside;
+  margin: 0;
+  padding: 0;
   font-size: 14px;
+}
+
+/* Адаптивность: чуть масштабируем шрифт на мобильных */
+@media (max-width: 480px) {
+  .screen-heading {
+    font-size: 16px;
+  }
+  .cyber-btn {
+    font-size: 12px;
+  }
+  .cyber-bottom-nav {
+    flex-direction: column;
+    height: auto;
+  }
 }
