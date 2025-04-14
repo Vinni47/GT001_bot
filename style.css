@@ -1,5 +1,5 @@
 body {
-  margin: 0; padding: 0;
+  margin: 0;
   font-family: Arial, sans-serif;
 }
 
@@ -8,6 +8,7 @@ body {
   width: 100%;
   height: 100vh;
   position: relative;
+  box-sizing: border-box;
 }
 
 .screen.active {
@@ -19,7 +20,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #f8f8f8;
+  background: #f8f8f8;
   padding: 10px;
   border-bottom: 1px solid #ccc;
 }
@@ -35,73 +36,13 @@ body {
   cursor: pointer;
 }
 
-/* Нижняя панель */
-.bottom-nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 60px;
-  border-top: 1px solid #ccc;
-  background-color: #f8f8f8;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-.nav-btn {
-  background: none;
-  border: none;
-  font-size: 14px;
-  cursor: pointer;
-  color: #333;
-}
-.nav-btn.active {
-  color: #007bff;
-  font-weight: bold;
-}
-
-/* Контент */
+/* Основное содержимое */
 .main-content {
   padding: 20px;
-  margin-bottom: 60px; /* чтобы не наезжать на bottom-nav */
-  text-align: left;
+  margin-bottom: 60px; /* оставляем пространство для нижней панели */
 }
 
-.no-teams-text {
-  text-align: center;
-  margin: 20px 0;
-}
-
-.link-button {
-  display: block;
-  margin: 0 auto;
-  background: none;
-  border: none;
-  color: #007bff;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-/* Списки Tools / More */
-.simple-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  border-top: 1px solid #ccc;
-}
-.simple-list li {
-  padding: 12px;
-  border-bottom: 1px solid #ccc;
-  font-size: 16px;
-  display: flex; 
-  justify-content: space-between;
-  align-items: center;
-}
-.list-value {
-  color: #666;
-  font-size: 14px;
-}
-
-/* Форма (Экран 2) */
+/* Форма */
 .form-group {
   margin-bottom: 15px;
 }
@@ -112,7 +53,44 @@ body {
 }
 .form-group input {
   width: 100%;
-  font-size: 14px;
   padding: 8px;
+  font-size: 14px;
   box-sizing: border-box;
+}
+
+/* Кнопки */
+button {
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Нижняя панель */
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 60px;
+  border-top: 1px solid #ccc;
+  background: #f8f8f8;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Стили для списка спонсоров и других списков */
+.simple-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.simple-list li {
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;
+  cursor: pointer;
+}
+.list-value {
+  color: #666;
+  font-size: 14px;
 }
