@@ -1,35 +1,118 @@
 body {
+  margin: 0; padding: 0;
   font-family: Arial, sans-serif;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.screen.active {
+  display: block;
+}
+
+/* Верхняя панель */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f8f8f8;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.top-bar h1 {
   margin: 0;
-  padding: 0;
-  text-align: center;
-  background-color: #f4f4f4;
+  font-size: 18px;
 }
-
-#app {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 15px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-#sendData {
-  padding: 10px 20px;
-  font-size: 16px;
+.top-bar-btn {
+  background: none;
   border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: #fff;
+  color: #007bff;
+  font-size: 16px;
   cursor: pointer;
 }
 
-#sendData:hover {
-  background-color: #0056b3;
+/* Нижняя панель */
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 60px;
+  border-top: 1px solid #ccc;
+  background-color: #f8f8f8;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.nav-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  color: #333;
+}
+.nav-btn.active {
+  color: #007bff;
+  font-weight: bold;
+}
+
+/* Контент */
+.main-content {
+  padding: 20px;
+  margin-bottom: 60px; /* чтобы не наезжать на bottom-nav */
+  text-align: left;
+}
+
+.no-teams-text {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.link-button {
+  display: block;
+  margin: 0 auto;
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Списки Tools / More */
+.simple-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #ccc;
+}
+.simple-list li {
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+}
+.list-value {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Форма (Экран 2) */
+.form-group {
+  margin-bottom: 15px;
+}
+.form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+.form-group input {
+  width: 100%;
+  font-size: 14px;
+  padding: 8px;
+  box-sizing: border-box;
 }
