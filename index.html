@@ -3,15 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Gaslands Cyberpunk Companion</title>
-  <!-- Подключим Google-шрифт для футуристического вида (например, Share Tech Mono) -->
+  <!-- Адаптивное отображение для мобильных устройств -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Подключаем Google Font для футуристического вида -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-
+  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Верхняя "статичная" панель в стиле, похожем на твой скриншот -->
+  <!-- Верхняя панель с информацией -->
   <header class="cyber-top-bar">
     <div class="cyber-title">RIPPERDOC SURGICAL SOFTWARE V2</div>
     <div class="cyber-subtitle">
@@ -65,7 +68,7 @@
     <button class="cyber-btn small" id="btnSponsorBack">Назад</button>
 
     <div class="content-block">
-      <!-- Сюда подгрузим список спонсоров из sponsors.json -->
+      <!-- Контейнер для динамически подгружаемого списка спонсоров -->
       <ul id="sponsorList" class="sponsor-list"></ul>
     </div>
     <div class="footer-line">
@@ -105,7 +108,7 @@
     </div>
   </div>
 
-  <!-- "Нижняя" панель навигации, если нужно (можно стилизовать иначе) -->
+  <!-- Нижняя навигация -->
   <nav class="cyber-bottom-nav">
     <button class="cyber-btn nav" id="navTeams">Команды</button>
     <button class="cyber-btn nav" id="navTools">Инструменты</button>
